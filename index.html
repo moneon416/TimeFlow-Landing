@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TimeFlow — 중소 제조업을 위한 생산 스케줄 자동화</title>
-  <meta name="description" content="엑셀 대신 TimeFlow. 드래그 한 번으로 MIP 최적화 스케줄링. 중소 제조업 현장을 위한 생산 관리 도구." />
+  <title>TimeFlow — 제조업을 위한 생산 스케줄 자동화</title>
+  <meta name="description" content="엑셀 대신 TimeFlow. 드래그 한 번으로 MIP 최적화 스케줄링. 제조업 현장을 위한 생산 관리 도구." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
@@ -187,17 +187,40 @@
       display: block;
       width: 100%;
       aspect-ratio: 16/9;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+      position: relative;
+    }
+    .preview-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .preview-overlay {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      background: transparent;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background .2s;
     }
-    .preview-placeholder {
-      text-align: center;
-      color: var(--text3);
+    .preview-overlay:hover {
+      background: rgba(37,99,235,.08);
     }
-    .preview-placeholder .icon { font-size: 40px; margin-bottom: 12px; }
-    .preview-placeholder p { font-size: 14px; }
+    .preview-overlay-btn {
+      background: rgba(37,99,235,.85);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 999px;
+      opacity: 0;
+      transition: opacity .2s;
+      pointer-events: none;
+    }
+    .preview-overlay:hover .preview-overlay-btn { opacity: 1; }
 
     /* ── PAIN ── */
     section { padding: 80px 40px; }
@@ -467,7 +490,7 @@
   </div>
   <h1>스케줄 최적화,<br />이제 <span>5분</span>이면 됩니다</h1>
   <p class="hero-sub">
-    엑셀에서 벗어나지 못한 중소 제조업 현장을 위한<br />
+    엑셀에서 벗어나지 못한 제조업 현장을 위한<br />
     MIP 기반 생산 스케줄 자동화 도구
   </p>
   <div class="hero-btns">
@@ -486,10 +509,16 @@
       <div class="preview-url">time-flow-bice.vercel.app</div>
     </div>
     <div class="preview-img">
-      <div class="preview-placeholder">
-        <div class="icon">🖥️</div>
-        <p style="color:#475569">라이브 데모 → <a href="https://time-flow-bice.vercel.app/" target="_blank" style="color:#3b82f6">time-flow-bice.vercel.app</a></p>
-      </div>
+      <iframe
+        class="preview-iframe"
+        src="https://time-flow-bice.vercel.app/"
+        title="TimeFlow 라이브 데모"
+        loading="lazy"
+        scrolling="no"
+      ></iframe>
+      <a class="preview-overlay" href="https://time-flow-bice.vercel.app/" target="_blank" aria-label="전체화면으로 열기">
+        <span class="preview-overlay-btn">전체화면으로 열기 →</span>
+      </a>
     </div>
   </div>
 </div>
@@ -498,7 +527,7 @@
 <section class="center-section">
   <p class="section-label">문제 인식</p>
   <h2>혹시 이런 적 있으신가요?</h2>
-  <p class="section-sub">중소 제조업 현장의 스케줄 담당자가 매일 겪는 문제들입니다</p>
+  <p class="section-sub">제조업 현장의 스케줄 담당자가 매일 겪는 문제들입니다</p>
   <div class="pain-grid">
     <div class="pain-card">
       <div class="pain-icon">📊</div>
